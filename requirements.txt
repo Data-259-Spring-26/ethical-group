@@ -1,0 +1,10 @@
+requests
+pandas
+numpy
+matplotlib
+seaborn
+textblob
+vaderSentiment
+textstat
+census
+python-dotenv
