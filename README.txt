@@ -36,7 +36,8 @@ REPOSITORY STRUCTURE
 │   ├── 01_data_collection.ipynb
 │   ├── 02_targeting_analysis.ipynb
 │   ├── 03_spend_by_demographic.ipynb
-│   └── 04_content_nlp_analysis.ipynb
+│   ├── 04_content_nlp_analysis.ipynb
+│   └── 05_shed_econometric_analysis.ipynb
 ├── scripts/
 │   ├── meta_api_pull.py      # Meta Ad Library API data collection
 │   ├── census_pull.py        # ACS data collection via Census API
@@ -67,6 +68,10 @@ DATA SOURCES
 3. Ad Creative Text (NLP)
    Ad copy returned by the Meta API is analyzed using NLP techniques to test
    whether messaging strategy differs systematically across targeted demographics.
+
+4. Federal Reserve SHED 2024 (Survey of Household Economics and Decisionmaking)
+   Used for advanced econometric modeling (PCA, OLS, Propensity Score Matching)
+   to firmly establish the link between financial fragility and BNPL usage.
 
 ================================================================================
 REPRODUCING THE RESULTS
@@ -108,6 +113,7 @@ Step-by-Step
        notebooks/02_targeting_analysis.ipynb    -- Age/gender targeting + chi-square tests
        notebooks/03_spend_by_demographic.ipynb  -- Ad spend breakdown by age group
        notebooks/04_content_nlp_analysis.ipynb  -- Readability, sentiment, keywords
+       notebooks/05_shed_econometric_analysis.ipynb -- PCA, OLS, and PSM on SHED data
 
 ================================================================================
 ANALYSIS SUMMARY
@@ -125,6 +131,12 @@ Keyword Analysis      | Frequency counts: risk language vs.       | Keyword freq
                       | urgency/aspirational language             | heatmaps
 Sentiment             | VADER / TextBlob polarity scores          | Sentiment distributions
                       | on ad copy                                | by target group
+Vulnerability PCA     | Principal Component Analysis on fragility | Continuous Vulnerability
+                      | variables (EF1, atleast_okay, E2, K0)     | Score (PC1)
+OLS Linear Model      | Predict BNPL use via vulnerability score  | Summary table & interaction
+                      | and demographic interaction terms         | plot vs age
+PSM                   | Propensity Score Matching by demographics | Balanced T-test between
+                      | to isolate the effect of fragility        | Fragile & Non-Fragile
 
 ================================================================================
 ETHICS CONNECTION
